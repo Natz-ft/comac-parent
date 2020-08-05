@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ExperimentDao">
+
+    <!--    查询油机列表-->
+    <select id="getExperimentActionList" parameterType="string" resultType="com.cmsr.comac.commander.pojo.Experiment">
+        select id,screen_id,engine_id,thermometer_id,enable,location from experiment where location=#{location}
+    </select>
+
+    <!--    根据id查询实验-->
+    <select id="getExperimentActionById" parameterType="integer" resultType="com.cmsr.comac.commander.pojo.Experiment">
+        select id,screen_id,engine_id,thermometer_id,enable,location from experiment where id=#{id}
+    </select>
+
+    <!--    关闭对应id的实验-->
+    <update id="updateEnableToOff" parameterType="integer">
+        update experiment set enable=0 where id=#{id}
+    </update>
+
+    <!--    开启对应id的实验-->
+    <update id="updateEnableToOn" parameterType="integer">
+        update experiment set enable=1 where id=#{id}
+    </update>
+
+
+</mapper>
+
+
+

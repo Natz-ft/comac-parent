@@ -1,0 +1,45 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ThermometerDao">
+
+    <!--    查询数字温度显示仪列表-->
+    <select id="queryThermometerList" resultType="com.cmsr.comac.commander.pojo.Thermometer">
+        select id,description,location,camera_id,enable,recognition_enable,created_at,updated_at from thermometer
+        <if test="location != null and location.trim() != ''">
+            where location=#{location}
+        </if>
+    </select>
+
+    <!--    根据id查询数字温度显示仪对象-->
+    <select id="queryThermometerById" parameterType="integer" resultType="com.cmsr.comac.commander.pojo.Thermometer">
+        select id,description,location,camera_id,enable,recognition_enable,created_at,updated_at from thermometer where id=#{id}
+    </select>
+
+    <!--    关闭数字温度显示仪图像采集-->
+    <update id="updateThermometerEnableToOff" parameterType="integer">
+        update thermometer set enable=0 where id=#{id}
+    </update>
+
+    <update id="updateThermometerEnableToOn" parameterType="integer">
+         update thermometer set enable=1 where id=#{id}
+    </update>
+
+    <!--    关闭视觉识别-->
+    <update id="updateEngineRecognitionEnableToOff" parameterType="integer">
+        update thermometer set recognition_enable=0 where id=#{id}
+    </update>
+
+    <!--    开启数字温度仪视觉识别-->
+    <update id="updateEngineRecognitionEnableToOn" parameterType="integer">
+        update thermometer set recognition_enable=1 where id=#{id}
+    </update>
+
+
+</mapper>
+
+
+

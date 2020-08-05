@@ -1,0 +1,69 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.UserDao">
+
+    <!--    查询用户-->
+    <select id="queryUser" parameterType="string" resultType="com.cmsr.comac.commander.pojo.User">
+        select username,password,nickname,role from `user` where binary username=#{username} and password=#{password} and deleted=0
+
+    </select>
+
+    <!--    查询用户列表-->
+    <select id="queryUserList" resultType="com.cmsr.comac.commander.pojo.User">
+        select username,nickname,role from `user` where deleted=0
+    </select>
+
+    <!--新增用户-->
+    <insert id="addUser" parameterType="com.cmsr.comac.commander.pojo.User">
+        insert into `user` (username,nickname,password,role,created_at) values (#{user.username},#{user.nickname},#{user.password},#{user.role},now())
+    </insert>
+    <!-- 批量更新用户信息-->
+    <update id="UpdateUserPressence">
+        <foreach collection="users" item="usersbean" separator=";">
+            update `user` set distinguishedName=#{usersbean.distinguishedName} ,updated_at=now() where username=#{usersbean.name}
+        </foreach>
+
+    </update>
+    <!--    根据商发域返回的用户列表跟新本地库用户信息-->
+    <insert id="addUserNotPressence">
+        insert into `user` (username,distinguishedname,nickname,role,created_at) values
+        <foreach collection="users" item="usersBean" separator=",">
+            (#{usersBean.name},#{usersBean.distinguishedName},#{usersBean.description},'user',now())
+        </foreach>
+    </insert>
+
+    <!--    修改用户信息-->
+    <update id="updateUserInfo">
+        update `user`
+        <set>
+            <if test="user.getPassword != null and user.getPassword.trim() != ''">
+                password=#{user.password},
+            </if>
+            <if test="user.getNickname != null and user.getNickname.trim() != ''">
+                nickname=#{user.nickname},
+            </if>
+            <if test="user.getRole != null and user.getRole.trim() != ''">
+                role=#{user.role},
+            </if>
+            updated_at=now()
+        </set>
+        where username=#{user.username}
+    </update>
+
+    <!--    根据用户名删除用户-->
+    <update id="deleteUserByUserName" parameterType="string">
+        update `user` set deleted=1,updated_at=now() where username=#{username}
+    </update>
+
+    <!--    根据用户名查询用户-->
+    <select id="queryUserByUserName" parameterType="string" resultType="com.cmsr.comac.commander.pojo.User">
+        select id,username,nickname,password,distinguishedName,role,deleted from `user` where username=#{username} and deleted=0
+    </select>
+</mapper>
+
+
+

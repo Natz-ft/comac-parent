@@ -1,0 +1,433 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emailable Report</title>
+</head>
+<body>
+<h1>Emailable Report</h1>
+
+<p>
+    <em>System Configuration</em><br />
+        <strong>测试人员</strong>: 洪硕</p>
+
+<table width="100%" border="1" cellspacing="2" cellpadding="10" style="border-collapse: collapse; display: table;">
+    <tbody>
+        <tr>
+          <th>Test Method</th>
+          <th>Status</th>
+          <th>Start Time</th>
+          <th>Duration</th>
+        </tr>
+
+              <tr>
+                <th colspan="4">Test Name: <em>桌⾯采集相关接⼝测试</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>compressImage</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:24 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+6ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>getScreenImage</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:24 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 2s+41ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>queryScreenById</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+349ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryScreenList</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+22ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>updateScreenEnableOrRecognitionEnableToOff</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+1ms</font>
+                    </td>
+                  </tr>
+              <tr>
+                <th colspan="4">Test Name: <em>油机相关接⼝</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryEngineById</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryEngineList</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>updateEngineEnableOrRecognitionEnableToOff</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+              <tr>
+                <th colspan="4">Test Name: <em>数字温度仪表盘相关接⼝测试</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>getThermometerTxtData</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+3ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>queryThermometerById</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+3ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryThermometerList</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+3ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>updateThermometerEnableOrEngineRecognitionEnableToOff</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+3ms</font>
+                    </td>
+                  </tr>
+              <tr>
+                <th colspan="4">Test Name: <em>数字仪表盘数据的历史记录测试</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryThermometerDataHistoryByIdAndTimestamp</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+              <tr>
+                <th colspan="4">Test Name: <em>告警相关接口测试</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>getAlarmConnectImage</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+1ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryAlarmByAlarmId</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+3ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>queryAlarmList</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:26 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+65ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>testMD5</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+1ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>updateAlarmStatusToOff</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+              <tr>
+                <th colspan="4">Test Name: <em>用户管理接口测试</em> (Suite: <em>商发功能接口测试报告</em>)</th>
+              </tr>
+
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>addUser</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>deleteUserByUserName</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+1ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>loginByUser</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+0ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>logoutByUsername</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+1ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>queryUserList</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>test111</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+0ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#FF7F7F>
+                    <td>
+                        <font color="white"><em>testAddUserNotPressence</em></font>
+                    </td>
+                    <td>
+                        <font color="white">FAIL</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+53ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>testUpdateUserPressence</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+2ms</font>
+                    </td>
+                  </tr>
+                  <tr bgcolor=#8CA93E>
+                    <td>
+                        <font color="white"><em>updateUserInfo</em></font>
+                    </td>
+                    <td>
+                        <font color="white">PASS</font>
+                    </td>
+                    <td>
+                        <font color="white">Jun 2, 2020 1:54:27 PM</font>
+                    </td>
+                    <td>
+                        <font color="white">0h 0m 0s+8ms</font>
+                    </td>
+                  </tr>
+    </tbody>
+</table>
+
+<p style="color: gray; font-size: 10px; text-align: right;">
+    Reports by <a href="http://vimalselvam.com">vimalselvam.com</a>
+</p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ActionHistoryDao">
+
+    <!--    查询用户操作历史-->
+    <select id="queryActionHistoryByUsername" parameterType="string"
+            resultType="com.cmsr.comac.commander.pojo.ActionHistory">
+        select id,username,`action`,created_at from action_history
+        <where>
+            <if test="username != null and username.trim() != ''">
+                username=#{username}
+            </if>
+            and deleted=0
+        </where>
+    </select>
+
+    <!--新增用户操作历史-->
+    <insert id="addActionHistory" parameterType="com.cmsr.comac.commander.pojo.ActionHistory">
+        insert into action_history (username,action,created_at) values (#{actionHistory.username},#{actionHistory.action},#{actionHistory.createdAt})
+    </insert>
+
+
+</mapper>
+
+
+

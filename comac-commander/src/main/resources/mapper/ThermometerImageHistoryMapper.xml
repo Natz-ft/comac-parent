@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ThermometerImageHistoryDao">
+
+    <!--    新增数字温度显示仪图片历史数据-->
+    <insert id="addThermometerImageHistory" parameterType="com.cmsr.comac.commander.pojo.ThermometerImageHistory">
+        insert into thermometer_image_history (thermometer_id,timestamp,filename) values (#{thermometerImageHistory.thermometerId},#{thermometerImageHistory.timestamp},#{thermometerImageHistory.filename})
+    </insert>
+    <!--  备份过期数字温度显示仪图片历史数据  -->
+    <insert id="copyThermometerImageHistory">
+        insert into thermometer_image_history_copy select id,thermometer_id,`timestamp`,filename from thermometer_image_history where `timestamp` &lt; #{timestamp}
+    </insert>
+
+    <!--    查询过期数字温度显示仪图片历史数据-->
+    <select id="queryThermometerImageHistory" parameterType="long"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerImageHistory">
+        select id,thermometer_id,`timestamp`,filename from thermometer_image_history where `timestamp` &lt; #{timestamp}
+    </select>
+
+    <!--    删除过期数字温度显示仪图片历史数据-->
+    <delete id="deleteThermometerImageHistory" parameterType="long">
+        delete from thermometer_image_history where `timestamp` &lt; #{timestamp}
+    </delete>
+
+    <!--    获取距离当前调用时间最近的一条温度仪历史图片数据-->
+    <!--    获取距离当前调用时间最近的一条温度仪历史图片数据-->
+    <select id="queryThermometerImageHistoryByThermometerId" parameterType="map"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerImageHistory">
+        select id,thermometer_id,`timestamp`,filename from thermometer_image_history where thermometer_id=#{id} and (#{nowTimestamp} - `timestamp`) &lt; 10000  order by `timestamp` desc limit 0,1
+    </select>
+
+</mapper>
+
+
+

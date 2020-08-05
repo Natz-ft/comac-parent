@@ -1,0 +1,9 @@
+server:
+  port: 6666
+spring:
+  application:
+    name: comac-scout
+
+screenToken: 550e8400-e29b-41d4-a716-446655440000
+
+

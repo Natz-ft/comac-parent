@@ -1,0 +1,141 @@
+server:
+  port: 8089
+
+
+spring:
+  application:
+    name: comac-commander
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/comac_commander?useSSL=false&autoReconnect=true&allowPublicKeyRetrieval=true&allowMultiQueries=true
+    username: root
+#    password: 1111
+    password: 123456
+
+
+mybatis:
+  type-aliases-package: com.cmsr.comac.commander.pojo
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true #驼峰匹配
+    #sql日志配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#分页插件配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+#私钥保存路径
+privateKeyPath: E:/桌面/private.txt
+#静态token
+screenToken: 550e8400-e29b-41d4-a716-446655440000
+
+#视觉目录
+BASE_DIR: D:\workspace-sy\comac-files\images
+#BASE_DIR: E:\comac-files\images
+#视觉目录
+BASE_DIR_COPY: D:\workspace-sy\comac-files\images_copy
+#视觉返回图片文件存放位置
+Vision_Base_Dir: D:\workspace-sy\comac-files\vision_images
+
+#视觉返回图片备份地址
+Vision_Base_copy_Dir: D:\workspace-sy\comac-files\vision_copy_images
+
+#Vision_Base_Dir: E:\comac-files\vision_images
+
+#最大超时时间
+maxTimeOut: 6000000000000
+
+#查询历史温度仪数据的条数
+TimesBefore: 2
+
+#校验码
+validate_code: shangfa
+
+#红绿状态框坐标宽高
+rg:
+  maps: {x: 0,y: 110,w: 50,h: 75}  #固定的坐标,切勿修改!
+
+#弹框坐标宽高
+pop:
+  maps: {x: 534,y: 214,w: 92,h: 18} #固定的坐标,切勿修改!
+
+
+
+#定时清理周期设定
+screen_archive_policy: 1
+engine_archive_policy: 7
+thermometer_archive_policy: 7
+alarm_archive_policy: 1
+
+# C# ip端口
+cameraUrl: http://192.168.3.14:54347
+#GET 触发拍摄动作，将拍摄的图⽚保存，将图⽚进⾏OCR，然后将OCR的结果和图⽚ID⼀并返回
+getCameraImage: ${cameraUrl}/comac-vision/v1.0/image/{image-id}
+#GET 返回具体某个相机的当前曝光值
+getCameraExposure: ${cameraUrl}/comac-vision/v1.0/camera/{id}/exposure
+#PUT 修改具体某个相机的当前曝光值
+putCameraExposure: ${cameraUrl}/comac-vision/v1.0/camera/{id}/exposure
+#POST 设置某个逻辑相机的需要做OCR的坐标
+postCameraOcrCoordinate: ${cameraUrl}/comac-vision/v1.0/ocr/camera/{id}
+#POST 识别图片中的字符，提交数字温度仪图片，返回结果
+postOcrResult: ${cameraUrl}/comac-vision/v1.0/camera/{id}/image-and-ocr
+#POST 提交桌面图片，识别图片中的颜色，返回结果
+postOcrScrResult: ${cameraUrl}/comac-vision/v1.0/scr
+#POST 提交数字温度仪对应相机id，获取数字温度仪图片
+ThermometerCamera: http://127.0.0.1:8085/ocr_process
+#POST 修改数字温度仪对应相机位置
+UpdateThermometerCameraOcr: http://172.0.0.1:8085/transfer_json
+#告警状态说明
+alarm:
+  lists:
+    #视觉状态文件告警类型
+    - 1001 # 视觉状态异常
+    - 1002 # 视觉状态文件不存在
+    - 1003 # 视觉状态文件非文件格式
+    - 1004 # 视觉状态数据未更新
+    - 1005 # 视觉状态文件内容为空
+    - 1006 # 视觉状态数据不合规
+
+    #视觉数据文件告警类型
+    - 2001 # 视觉数据文件不存在
+    - 2002 # 视觉数据文件非文件格式
+    - 2003 # 视觉数据文件未更新
+    - 2004 # 视觉数据文件内容为空
+    - 2005 # 视觉数据格式不合规
+    - 2006 # 视觉数据异常
+
+    #视觉图片数据告警类型
+    - 3001 # 视觉图片文件不存在
+    - 3002 # 视觉图片内容为空
+    - 3003 # 视觉图片文件不是图片格式
+    - 3004 # 视觉图片数据未更新
+    - 3005 # 读取图片异常
+
+    #温度仪表盘读数告警类型
+    - 4001 #上段超出规定温度范围
+    - 4002 #中段超出规定温度范围
+    - 4003 #下段超出规定温度范围
+
+    #截屏告警类型
+    - 5001  #红绿框为红色
+    - 5002  #
+    - 5003   #截屏程序调用异常获取不到图片
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

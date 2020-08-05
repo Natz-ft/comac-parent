@@ -1,0 +1,78 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ThermometerDataHistoryDao">
+
+    <!--    多条件查询数字温度显示仪历史数据-->
+    <select id="queryThermometerDataHistoryByIdAndTimestamp" parameterType="map"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerDataHistory">
+        select id,thermometer_id,`timestamp`,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle from
+        thermometer_data_history
+        <where>
+            thermometer_id=#{id}
+            <if test="startTime != null">
+                <if test="endTime != null">
+                    and `timestamp` between #{startTime} and #{endTime}
+                </if>
+            </if>
+            order by `timestamp` desc limit 0,1000
+        </where>
+    </select>
+
+    <!--    新增数字温度显示仪温度数据-->
+    <insert id="addThermometerDataHistory" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.cmsr.comac.commander.pojo.ThermometerDataHistory">
+        insert into thermometer_data_history (thermometer_id,timestamp,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle)
+         values (#{thermometerDataHistory.thermometerId},#{thermometerDataHistory.timestamp},#{thermometerDataHistory.upperTop},#{thermometerDataHistory.upperMiddle},#{thermometerDataHistory.centreTop},#{thermometerDataHistory.centreMiddle},#{thermometerDataHistory.downTop},#{thermometerDataHistory.downMiddle})
+    </insert>
+
+
+    <!--  备份过期数字温度显示仪温度数据  -->
+    <insert id="copyThermometerDataHistory">
+        insert into  thermometer_data_history_copy
+            select id,thermometer_id,`timestamp`,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle
+            from thermometer_data_history
+            where `timestamp` &lt; #{timestamp}
+    </insert>
+
+    <!--    删除过期数字温度显示仪温度数据-->
+    <delete id="deleteThermometerDataHistory" parameterType="long">
+        delete from thermometer_data_history where `timestamp` &lt; #{timestamp}
+    </delete>
+
+    <!--    获取距离调用时间最近的一条温度仪历史数据记录-->
+    <select id="queryThermometerDataHistoryByThermometerId" parameterType="map"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerDataHistory">
+        select id,thermometer_id,`timestamp`,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle from thermometer_data_history where thermometer_id=#{id} and (#{nowTimestamp} - `timestamp`) &lt; 10000  order by `timestamp` desc limit 0,1
+    </select>
+    <select id="queryThermometerDataHistoryById"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerDataHistory">
+        select id,thermometer_id,`timestamp`,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle
+        from thermometer_data_history
+        where
+        <if test="id &lt;= #{times}">
+            id &lt;= #{times}
+        </if>
+        <if test="id &gt;=  #{times}">
+            id between (#{id}-#{times}) and (#{id}-1)
+        </if>
+
+    </select>
+    <select id="queryThermometerDataHistoryLatestById"
+            resultType="com.cmsr.comac.commander.pojo.ThermometerDataHistory">
+        select
+            id,thermometer_id,`timestamp`,upper_top,upper_middle,centre_top,centre_middle,down_top,down_middle
+        from
+            thermometer_data_history
+        where
+             thermometer_id=#{id} and (#{nowTimestamp} - `timestamp`) &lt; 10000  order by `timestamp` desc limit 0,1
+    </select>
+
+
+</mapper>
+
+
+

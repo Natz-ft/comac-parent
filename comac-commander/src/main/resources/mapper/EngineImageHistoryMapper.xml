@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.EngineImageHistoryDao">
+
+    <!--    新增油机图片历史数据-->
+    <insert id="addEngineImageHistory" parameterType="com.cmsr.comac.commander.pojo.EngineImageHistory">
+        insert into engine_image_history (engine_id, timestamp, filename) values (#{engineImageHistory.engineId},#{engineImageHistory.timestamp},#{engineImageHistory.filename})
+    </insert>
+
+    <!--    查询过期油机图片历史数据-->
+    <select id="queryEngineImageHistory" parameterType="long"
+            resultType="com.cmsr.comac.commander.pojo.EngineImageHistory">
+        select id,engine_id,`timestamp`,filename from engine_image_history where `timestamp` &lt; #{timestamp}
+    </select>
+
+    <!--    删除过期油机图片历史数据-->
+    <delete id="deleteEngineImageHistory" parameterType="long">
+        delete from engine_image_history where `timestamp` &lt; #{timestamp}
+    </delete>
+
+    <!--查询最近一次保存的油机图片历史数据-->
+    <select id="queryEngineImageHistoryByEngineId" parameterType="map"
+            resultType="com.cmsr.comac.commander.pojo.EngineImageHistory">
+        select id,engine_id,`timestamp`,filename from engine_image_history where engine_id=#{id} and (#{nowTimestamp} - `timestamp`) &lt; 5000 order by `timestamp` desc limit 0,1
+    </select>
+
+
+</mapper>
+
+
+

@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ScreenImageHistoryDao">
+
+    <!--    新增截屏图片历史数据-->
+    <insert id="addScreenImageHistory" parameterType="com.cmsr.comac.commander.pojo.ScreenImageHistory">
+        insert into screen_image_history (`screen_id`, `timestamp`, `filename`) values (#{screenImageHistory.screenId},#{screenImageHistory.timestamp},#{screenImageHistory.filename})
+    </insert>
+    <!--    备份历史过期历史截屏数据-->
+    <insert id="copyScreenImageHistory">
+        insert  into  screen_image_history_copy select `id` ,`screen_id`, `timestamp`, `filename` from screen_image_history where `timestamp` &lt; #{timestamp}
+    </insert>
+
+    <!--    查询过期截屏图片历史数据-->
+    <select id="queryScreenImageHistory" parameterType="long"
+            resultType="com.cmsr.comac.commander.pojo.ScreenImageHistory">
+        select id,screen_id,`timestamp`,filename from screen_image_history where `timestamp` &lt; #{timestamp}
+    </select>
+
+    <!--    删除截屏图片历史数据-->
+    <delete id="deleteScreenImageHistory" parameterType="long">
+        delete from screen_image_history where `timestamp` &lt; #{timestamp}
+    </delete>
+
+    <!--查询最近一次保存的截屏图片历史数据-->
+    <select id="queryScreenImageHistoryByScreenId" parameterType="map"
+            resultType="com.cmsr.comac.commander.pojo.ScreenImageHistory">
+        select id,screen_id,`timestamp`,filename from screen_image_history where screen_id=#{id} and (#{nowTimestamp} - `timestamp`) &lt; 5000 order by `timestamp` desc limit 0,1
+    </select>
+
+
+</mapper>
+
+
+

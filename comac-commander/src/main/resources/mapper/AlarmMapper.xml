@@ -1,0 +1,65 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.AlarmDao">
+
+    <!--    根据条件查询所有告警-->
+    <select id="queryAlarmList" resultType="com.cmsr.comac.commander.pojo.Alarm" parameterType="map">
+        select
+        alarm_id,alarm_target,alarm_target_id,alarm_type,alarm_status,alarm_time,alarm_handle_time,alarm_handler_person,alarm_pic_name
+        from alarm
+        <where>
+            <if test="status != null">
+                alarm_status=#{status}
+            </if>
+            <if test="target !=null and target.trim() != ''">
+                and alarm_target=#{target}
+            </if>
+            <if test="startTime !=null">
+                <if test="endTime !=null">
+                    and alarm_time between #{startTime} and #{endTime}
+                </if>
+            </if>
+        </where>
+        order by alarm_time desc
+    </select>
+
+    <!--    根据告警id查询告警详情-->
+    <select id="queryAlarmByAlarmId" parameterType="long" resultType="com.cmsr.comac.commander.pojo.Alarm">
+        select alarm_id,alarm_target,alarm_target_id,alarm_type,alarm_status,alarm_time,alarm_handle_time,alarm_handler_person,alarm_pic_name
+        from alarm where alarm_id=#{alarmId}
+    </select>
+
+    <!--    关闭告警-->
+    <update id="updateAlarmStatusById" parameterType="map">
+        update alarm set alarm_status=#{status},alarm_handle_time=now(),alarm_handler_person=#{username} where alarm_id=#{alarmId}
+    </update>
+
+    <!--    新增告警-->
+    <insert id="addAlarm" parameterType="com.cmsr.comac.commander.pojo.Alarm" >
+        insert into alarm (alarm_target,alarm_target_id,alarm_type,alarm_status,alarm_time,alarm_pic_name)
+         values (#{alarm.alarmTarget},#{alarm.alarmTargetId},#{alarm.alarmType},#{alarm.alarmStatus},#{alarm.alarmTime},#{alarm.alarmPicName})
+    </insert>
+    <!--    备份过期的告警数据-->
+    <insert id="copyAlarmByTimestamp">
+        insert  into alarm_copy select alarm_id,alarm_target,alarm_target_id,alarm_type,alarm_status,alarm_time,alarm_handle_time,alarm_handler_person,alarm_pic_name from alarm where alarm_time &lt; #{timestamp}
+    </insert>
+    <!--    删除告警过期数据-->
+    <delete id="deleteAlarmByTimestamp" parameterType="long">
+        delete from alarm where alarm_time &lt; #{timestamp}
+    </delete>
+
+    <!--    根据类型和状态查询告警-->
+    <select id="queryAlarmByAlarmTypeAndAlarmStatus" parameterType="integer"
+            resultType="com.cmsr.comac.commander.pojo.Alarm">
+        select alarm_id,alarm_target,alarm_target_id,alarm_type,alarm_status,alarm_time,alarm_handle_time,alarm_handler_person,alarm_pic_name from alarm where alarm_type=#{error} and alarm_status=1
+    </select>
+
+
+</mapper>
+
+
+

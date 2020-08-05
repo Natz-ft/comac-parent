@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.EngineDao">
+
+    <!--    查询油机列表-->
+    <select id="queryEngineList" resultType="com.cmsr.comac.commander.pojo.Engine">
+        select id,description,location,enable,recognition_enable,created_at,updated_at from engine
+        <if test="location != null and location.trim() != ''">
+            where location=#{location}
+        </if>
+    </select>
+
+    <!--    根据id查询油机对象-->
+    <select id="queryEngineById" parameterType="integer" resultType="com.cmsr.comac.commander.pojo.Engine">
+        select id,description,location,enable,recognition_enable,created_at,updated_at,deleted from engine where id=#{id} and deleted=0
+    </select>
+
+    <!--    关闭油机功能-->
+    <update id="updateEngineEnableToOff" parameterType="integer">
+        update engine set enable=0 where id=#{id}
+    </update>
+
+    <!--    开启油机功能-->
+    <update id="updateEngineEnableToOn" parameterType="integer">
+        update engine set enable=1 where id=#{id}
+    </update>
+
+    <!--关闭油机视觉识别-->
+    <update id="updateEngineRecognitionEnableToOff" parameterType="integer">
+        update engine set recognition_enable=0 where id=#{id}
+    </update>
+
+    <!--开启油机视觉识别-->
+    <update id="updateEngineRecognitionEnableToOn" parameterType="integer">
+        update engine set recognition_enable=1 where id=#{id}
+    </update>
+
+
+</mapper>
+
+
+

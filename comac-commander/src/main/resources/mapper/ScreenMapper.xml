@@ -1,0 +1,46 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.cmsr.comac.commander.dao.ScreenDao">
+
+    <!--    查询截屏列表-->
+    <select id="queryScreenList" resultType="com.cmsr.comac.commander.pojo.Screen">
+        select id,description,url,location,enable,recognition_enable,created_at,updated_at from screen
+        <if test="location != null and location.trim() != ''">
+            where location=#{location}
+        </if>
+    </select>
+
+    <!--    根据id查询截屏对象-->
+    <select id="queryScreenById" parameterType="integer" resultType="com.cmsr.comac.commander.pojo.Screen">
+        select id,description,url,location,enable,recognition_enable,created_at,updated_at from screen where id=#{id}
+    </select>
+
+    <!--    关闭截屏-->
+    <update id="updateScreenEnableToOff" parameterType="integer">
+        update screen set enable=0 where id=#{id}
+    </update>
+
+    <!--    开启截屏采集-->
+    <update id="updateScreenEnableToOn" parameterType="integer">
+        update screen set enable=1 where id=#{id}
+    </update>
+
+    <!--    关闭截屏视觉识别-->
+    <update id="updateScreenRecognitionEnableToOff" parameterType="integer">
+        update screen set recognition_enable=0 where id=#{id}
+    </update>
+
+    <!--    开启截屏视觉识别-->
+    <update id="updateScreenRecognitionEnableToOn" parameterType="integer">
+        update screen set recognition_enable=1 where id=#{id}
+    </update>
+
+
+</mapper>
+
+
+

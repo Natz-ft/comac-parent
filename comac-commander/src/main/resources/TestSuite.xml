@@ -1,0 +1,42 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="商发功能接口测试报告" verbose="1" preserve-order="true">
+    <parameter name="report.config" value="src\main\resources\report\extent-config.xml"/>
+    <parameter name="system.info" value="com.cmsr.comac.commander.config.MySystemInfo"/>
+
+    <test name="桌⾯采集相关接⼝测试" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.ScreenServiceTest"/>
+        </classes>
+    </test>
+    <test name=" 油机相关接⼝" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.EngineServiceTest"/>
+        </classes>
+    </test>
+    <test name=" 数字温度仪表盘相关接⼝测试" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.ThermometerServiceTest"/>
+        </classes>
+    </test>
+    <test name="数字仪表盘数据的历史记录测试" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.ThermometerDataHistoryServiceTest"/>
+        </classes>
+    </test>
+    <test name="告警相关接口测试" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.AlarmServiceTest"/>
+
+        </classes>
+    </test>
+    <test name="用户管理接口测试" preserve-order="true">
+        <classes>
+            <class name="com.cmsr.comac.commander.service.UserServiceTest"/>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="com.cmsr.comac.commander.listener.MyExtentTestNgFormatter"/>
+    </listeners>
+</suite>
